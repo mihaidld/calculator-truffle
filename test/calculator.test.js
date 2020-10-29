@@ -11,31 +11,39 @@ const Calculator = contract.fromArtifact('Calculator');
 
 describe('Calculator', () => {
   beforeEach(async function () {
-    const adderInstance = await Adder.new();
+    this.adder = await Adder.new();
+    this.suber = await Suber.new();
+    this.multiplier = await Multiplier.new();
+    this.divisor = await Divisor.new();
+    /* const adderInstance = await Adder.new();
     const suberInstance = await Suber.new();
     const multiplierInstance = await Multiplier.new();
-    const divisorInstance = await Divisor.new();
+    const divisorInstance = await Divisor.new(); */
     this.calculator = await Calculator.new(
-      adderInstance.address,
+      this.adder.address,
+      this.suber.address,
+      this.multiplier.address,
+      this.divisor.address,
+      /* adderInstance.address,
       suberInstance.address,
       multiplierInstance.address,
-      divisorInstance.address,
+      divisorInstance.address, */
     );
   });
 
-  it('add numbers', async function () {
+  it('adds numbers', async function () {
     expect(await this.calculator.add(1, 1)).to.be.bignumber.equal(new BN(2));
   });
 
-  it('substract numbers nb1 - nb2', async function () {
+  it('substracts numbers nb1 - nb2', async function () {
     expect(await this.calculator.sub(100, 98)).to.be.bignumber.equal(new BN(2));
   });
 
-  it('reverts when nb1 < nb2', async function () {
+  it('reverts when substracts nb1 - nb2 and nb1 < nb2', async function () {
     await expectRevert(this.calculator.sub(98, 199), 'Suber: no negative value here.');
   });
 
-  it('multiply numbers', async function () {
+  it('multiplies numbers', async function () {
     expect(await this.calculator.mul(2, 3)).to.be.bignumber.equal(new BN(6));
   });
 
@@ -43,7 +51,7 @@ describe('Calculator', () => {
     expect(await this.calculator.div(12, 3)).to.be.bignumber.equal(new BN(4));
   });
 
-  it('reverts when nb2 == 0', async function () {
+  it('reverts when divides by 0', async function () {
     await expectRevert(this.calculator.div(5, 0), 'Divisor: can not divide by 0');
   });
 });
