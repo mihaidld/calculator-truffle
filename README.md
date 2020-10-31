@@ -25,17 +25,13 @@ Lancez vos tests avec `yarn test`.
 
 ## 4 Déployer sur les testnets
 
-En utilisant truffle, déployer les smart contracts, `Adder`, `Suber`, `Multiplier`, `Divisor` et `Calculator` sur les testnets suivants:
-
-- Kovan
-- Rinkeby
-- Goerli
+En utilisant truffle, déployer les smart contracts, `Adder`, `Suber`, `Multiplier`, `Divisor` et `Calculator` sur les testnets.
 
 Il vous faudra récupérer des ethers de tests pour ces réseaux.
 
 Fournir l'adresse des smart contracts déployés sur ces réseaux.
 
-Contrats deployes sur **rinkeby**, **kovan** and **goerli**:
+Contrats deployes sur **rinkeby**, **kovan**, **goerli** and **ropsten**:
 
 - _Migrations_ at : `0x7D114Ced2f99206Ff685e8c3D73942FC48515c5E`
 - _Adder_ at : `0x3F0DA78071f6F2cffeEEBcC766b3dA014af80376`
